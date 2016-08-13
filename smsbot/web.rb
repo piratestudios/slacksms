@@ -6,7 +6,7 @@ module SMSBot
       "Beep boop"
     end
 
-    get '/incoming' do
+    incoming = lambda do
       id, from, to, body = params.values_at('MessageSid', 'From', 'To', 'Body')
       additional_info = JSON.parse(params['extra']) unless params['extra'].nil?
 
@@ -30,6 +30,9 @@ module SMSBot
 
       status 200
     end
+
+    get '/incoming', &incoming
+    post '/incoming', &incoming
 
     private
 

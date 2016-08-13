@@ -7,27 +7,18 @@ module SMSBot
         @client ||= Twilio::REST::Client.new
       end
 
-      def send(to: "", body: "", &block)
-        from = phone_number_for(to)
+      def messaging_service_sid
+        ENV['TWILIO_MESSAGING_SERVICE_SID']
+      end
 
+      def send(to: "", body: "", &block)
         client.messages.create(
+          messaging_service_sid: messaging_service_sid,
           from: from,
-          to: to,
           body: body
         )
 
         block.call(from)
-      end
-
-      private
-
-      # Find the best matching phone number from a target number
-      #
-      # @return [String]
-
-      def phone_number_for(target)
-        numbers = ENV['TWILIO_PHONE_NUMBERS'].split(',').map(&:strip)
-        numbers.first #TODO
       end
     end
   end
