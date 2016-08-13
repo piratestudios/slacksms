@@ -12,7 +12,7 @@ module SMSBot
         client.typing(channel: data.channel)
 
         begin
-          SMSBot::SMS.send(to: reference, body: message) do |from|
+          SMSBot::SMS.send(to: reference, body: message) do
             client.say(
               channel: data.channel,
               text: ":heavy_check_mark: Message sent!"

@@ -14,11 +14,11 @@ module SMSBot
       def send(to: "", body: "", &block)
         client.messages.create(
           messaging_service_sid: messaging_service_sid,
-          from: from,
+          to: to,
           body: body
         )
 
-        block.call(from)
+        block.call
       end
     end
   end
