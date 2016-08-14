@@ -8,7 +8,7 @@ module SMSBot
 
     incoming = lambda do
       id, from, to, body = params.values_at('MessageSid', 'From', 'To', 'Body')
-      additional_info = JSON.parse(params['extra']) unless params['extra'].nil?
+      additional_info = JSON.parse(URLcrypt.decrypt(params['extra'])) unless params['extra'].nil?
 
       attachments = [
         {

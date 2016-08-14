@@ -6,6 +6,7 @@ gem 'celluloid-io'
 gem 'puma'
 gem 'sinatra'
 gem 'dotenv'
+gem 'urlcrypt', '~> 0.1', require: 'URLcrypt'
 
 group :test do
   gem 'rspec'
