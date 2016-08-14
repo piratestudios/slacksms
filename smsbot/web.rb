@@ -10,7 +10,8 @@ module SMSBot
       id, from, to, body = params.values_at('MessageSid', 'From', 'To', 'Body')
       return if from.nil? && body.nil?
 
-      additional_info = JSON.parse(URLcrypt.decrypt(params['extra'].strip)) unless params['extra'].nil?
+      extra = params['extra'].strip
+      additional_info = JSON.parse(URLcrypt.decrypt(extra)) unless extra.nil?
 
       attachments = [
         {
