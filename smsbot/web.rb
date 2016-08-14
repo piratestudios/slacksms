@@ -12,12 +12,12 @@ module SMSBot
 
       attachments = [
         {
-          title: "From",
-          text: from
-        },
-        {
           title: "Message",
           text: body
+        },
+        {
+          title: "From",
+          text: from
         }
       ].concat(additional_info || [])
 
