@@ -9,7 +9,7 @@ This was very quickly hacked together over a day, and has no tests. This will ho
 # Deployment
 
 This bot can be deployed directly to Heroku. Standard integration is very simple, just set the following URL as
-the Twilio incoming SMS webhook URL: http://<app-name>.herokuapp.com/incoming. It supports either GET or POST requests. It works only with a Twilio messaging service, with which you'll need to associate at least one phone number.
+the Twilio incoming SMS webhook URL: `http://<app-name>.herokuapp.com/incoming`. It supports either GET or POST requests. It works only with a Twilio messaging service, with which you'll need to associate at least one phone number.
 
 Create a custom integration bot in Slack and set the API key and channel in env vars.
 
