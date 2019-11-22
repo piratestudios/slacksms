@@ -12,6 +12,7 @@ module SMSBot
       end
 
       def send(to: "", body: "", &block)
+        to = to.gsub(/[^\d]/, '')
         client.messages.create(
           messaging_service_sid: messaging_service_sid,
           to: to,
