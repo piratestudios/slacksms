@@ -18,7 +18,12 @@ module SMSBot
         to = to[/(\d+)/]
         # Do the same for the body, stripping as many <tel:+1234|+1234>
         # that occur.
-        body = body.gsub(/<tel:(\+\d+)\|\+\d+>/, '\1')
+        body.gsub!(/<tel:\+\d+\|(\+\d+)>/, '\1')
+        # Strip website tags <http://pirate.com/piratelive@pirate.com/piratelive>
+        # Strip website tags <http://pirate.com/piratelive|pirate.com/piratelive>
+        body.gsub!(/<http:\/\/[\w\.\/]+[\@|]([\w\.\/]+)>/, '\1')
+        # Strip mailto tags <mailto:pete2.black@pirate.co.uk|pete2.black@pirate.co.uk>
+        body.gsub!(/<mailto:[\w\d\.\@]+\|([\w\d\.\@]+)>/, '\1')
 
         client.messages.create(
           messaging_service_sid: messaging_service_sid,
