@@ -20,7 +20,8 @@ module SMSBot
         # that occur.
         body.gsub!(/<tel:\+\d+\|(\+\d+)>/, '\1')
         # Strip website tags <http://pirate.com/piratelive@pirate.com/piratelive>
-        body.gsub!(/<http:\/\/[\w\.\/]+\@([\w\.\/]+)>/, '\1')
+        # Strip website tags <http://pirate.com/piratelive|pirate.com/piratelive>
+        body.gsub!(/<http:\/\/[\w\.\/]+[\@|]([\w\.\/]+)>/, '\1')
 
         client.messages.create(
           messaging_service_sid: messaging_service_sid,
