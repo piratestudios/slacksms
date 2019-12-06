@@ -7,15 +7,12 @@ module SMSBot
         long_desc 'command format: reply +447911111111 Hello there Bobby Tables, how can I help?'
       end
 
-      command 'reply', 'send' do |client, data, match|
-        reference, message = match['expression'].split(' ', 2)
-        client.typing(channel: data.channel)
-
+      match /(?<command>reply|send)\p{Z}+(?<to>\+?[\d]+|<tel:\+?\d+\|\+?\d+>)\p{Z}+(?<message>.*)/ do |client, data, match|
         begin
-          SMSBot::SMS.send(to: reference, body: message) do
+          SMSBot::SMS.send(to: match['to'], body: match['message']) do
             client.say(
               channel: data.channel,
-              text: ":heavy_check_mark: Message sent!"
+              text: ":heavy_check_mark: Message sent to `#{match['to']}`:\n\n```#{match['message']}```"
             )
           end
         rescue Exception => ex
@@ -27,6 +24,7 @@ module SMSBot
           raise ex
         end
       end
+
     end
   end
 end
