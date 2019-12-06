@@ -25,8 +25,8 @@ module SMSBot
         body.gsub!(/<tel:\+\d+\|(\+\d+)>/, '\1')
         # Strip website tags <http://pirate.com/piratelive@pirate.com/piratelive>
         # Strip website tags <http://pirate.com/piratelive|pirate.com/piratelive>
-        body.gsub!(/<https?:\/\/[\w\.\/]+[\@|]([\w\.\/]+)>/, '\1')
-        body.gsub!(/<(https?:\/\/.*)>/, '\1') # not sure why...
+        body.gsub!(/<https?:\/\/[\w\.\/]+?[\@|]([\w\.\/]+?)>/, '\1')
+        body.gsub!(/<(https?:\/\/.*?)>/, '\1') # not sure why...
 
         # Strip mailto tags <mailto:pete2.black@pirate.co.uk|pete2.black@pirate.co.uk>
         body.gsub!(/<mailto:[\w\d\.\@]+\|([\w\d\.\@]+)>/, '\1')
