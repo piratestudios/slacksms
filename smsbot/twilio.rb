@@ -37,7 +37,6 @@ module SMSBot
           puts "[body][decode]  '#{body}'"
           coder = HTMLEntities.new
           body = coder.decode(body)
-          puts "[body][decoded] '#{body}'"
         end
         puts "[body][final]   '#{body}'"
         puts ""

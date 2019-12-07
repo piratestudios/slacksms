@@ -7,7 +7,15 @@ module SMSBot
         long_desc 'command format: reply +447911111111 Hello there Bobby Tables, how can I help?'
       end
 
-      match /^\p{Z}*(?<bot><\@[\w\d]+>)\p{Z}*(?<command>reply\p{Z}+|send\p{Z}+)?(?<to>\+?[\d]+|<tel:\+?\d+\|\+?\d+>)\p{Z}+(?<message>.*)/ do |client, data, match|
+      match %r{
+          ^\p{Z}*                               # some white space
+          (?<bot><\@[\w\d]+>)                   # bot identifier e.g. <@UQXACP1JT>
+          \p{Z}*                                # optional spaces before command
+          (?<command>reply\p{Z}+|send\p{Z}+)?   # "reply" or "send", but this is now optional, followed by whitespace
+          (?<to>\+?[\d]+|<tel:\+?\d+\|\+?\d+>)  # phone number, either as plain-text or as a <tel:1234|4321>
+          \p{Z}+                                # at least one space
+          (?<message>.+)                        # message of one or more characters
+        }x do |client, data, match|
         #puts "data: #{data.inspect}\n"
 
         #puts "data.text:   #{data.text}"
