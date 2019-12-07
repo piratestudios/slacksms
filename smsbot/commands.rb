@@ -7,7 +7,12 @@ module SMSBot
         long_desc 'command format: reply +447911111111 Hello there Bobby Tables, how can I help?'
       end
 
-      match /(?<command>reply|send)\p{Z}+(?<to>\+?[\d]+|<tel:\+?\d+\|\+?\d+>)\p{Z}+(?<message>.*)/ do |client, data, match|
+      match /^\p{Z}*(?<bot><\@[\w\d]+>)\p{Z}*(?<command>reply\p{Z}+|send\p{Z}+)?(?<to>\+?[\d]+|<tel:\+?\d+\|\+?\d+>)\p{Z}+(?<message>.*)/ do |client, data, match|
+        #puts "data: #{data.inspect}\n"
+
+        #puts "data.text:   #{data.text}"
+        #puts "match:       #{match.inspect}"
+
         begin
           SMSBot::SMS.send(to: match['to'], body: match['message']) do
             client.say(
