@@ -15,9 +15,11 @@ Create a custom integration bot in Slack and set the API key and channel in env 
 
 # Usage
 
-SMS messages will automatically be posted to the configured channel. To reply, use the following format:
+SMS messages will automatically be posted to the configured channel. To reply, use one of the following:
 
-`@smsbot reply +447911111111 Example reply message, hello!`
+* `@smsbot send +447911111111 Example reply message, hello!`
+* `@smsbot reply +447911111111 Example reply message, hello!`
+* `@smsbot +447911111111 Example reply message, hello!` <-- so very lazy
 
 # Extra information
 
@@ -79,3 +81,12 @@ TWILIO_AUTH_TOKEN
 TWILIO_MESSAGING_SERVICE_SID
   _supports using a messaging service only, due to automatic region detection_
 ```
+
+# Developing locally
+
+1. Clone the repo.
+2. Create an .env file containing the same values [specified in heroku](https://dashboard.heroku.com/apps/pirate-studios-smsbot/settings).
+3. `rackup` to start server.
+4. Use [ngrok](https://ngrok.com/) or similar to reverse-proxy the port to the outside world.
+5. Create a [slack bot](https://pirate-studios.slack.com/apps/A0F7YS25R-bots) or re-use Brittany's `sms-test-bot`.
+6. `git push` to master to deployment to heroku.
