@@ -85,8 +85,9 @@ TWILIO_MESSAGING_SERVICE_SID
 # Developing locally
 
 1. Clone the repo.
-2. Create an .env file containing the same values [specified in heroku](https://dashboard.heroku.com/apps/pirate-studios-smsbot/settings).
-3. `rackup` to start server.
-4. Use [ngrok](https://ngrok.com/) or similar to reverse-proxy the port to the outside world.
-5. Create a [slack bot](https://pirate-studios.slack.com/apps/A0F7YS25R-bots) or re-use Brittany's `sms-test-bot`.
-6. `git push` to master to deployment to heroku.
+2. `bundle install`
+3. Create an .env file containing the same values [specified in heroku](https://dashboard.heroku.com/apps/pirate-studios-smsbot/settings).
+4. `rackup` to start server.
+5. Use [ngrok](https://ngrok.com/) or similar to reverse-proxy the port to the outside world.
+6. Create a [slack bot](https://pirate-studios.slack.com/apps/A0F7YS25R-bots) or re-use Brittany's `sms-test-bot`.
+7. `git push` to master to deploy to heroku.
