@@ -1,12 +1,12 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (6.0.2.1)
+    activesupport (6.0.3.3)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-      zeitwerk (~> 2.2)
+      zeitwerk (~> 2.2, >= 2.2.2)
     async (1.24.2)
       console (~> 1.0)
       nio4r (~> 2.3)
@@ -16,7 +16,7 @@ GEM
     async-websocket (0.8.0)
       async-io
       websocket-driver (~> 0.7.0)
-    concurrent-ruby (1.1.6)
+    concurrent-ruby (1.1.7)
     console (1.8.1)
     diff-lcs (1.3)
     dotenv (2.7.5)
@@ -27,11 +27,11 @@ GEM
     gli (2.19.0)
     hashie (4.1.0)
     htmlentities (4.3.4)
-    i18n (1.8.2)
+    i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     jwt (2.2.1)
     mini_portile2 (2.4.0)
-    minitest (5.14.0)
+    minitest (5.14.2)
     multipart-post (2.1.1)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
@@ -81,13 +81,13 @@ GEM
       faraday (~> 0.9)
       jwt (>= 1.5, <= 2.5)
       nokogiri (>= 1.6, < 2.0)
-    tzinfo (1.2.6)
+    tzinfo (1.2.7)
       thread_safe (~> 0.1)
     urlcrypt (0.1.1)
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.2.2)
+    zeitwerk (2.4.0)
 
 PLATFORMS
   ruby
